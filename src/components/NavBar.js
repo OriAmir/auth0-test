@@ -8,9 +8,26 @@ const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        height: "100%",
+        width: "100%",
+        "justify-content": "center"
+      }}
+    >
       {!isAuthenticated && (
-        <button onClick={() => loginWithRedirect({})}>Log in</button>
+        <button
+          style={{
+            height: "100px",
+            width: "200px",
+            "background-color": "red",
+            "font-size": "20px"
+          }}
+          onClick={() => loginWithRedirect({})}
+        >
+          Log in
+        </button>
       )}
 
       {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
@@ -18,8 +35,20 @@ const NavBar = () => {
       {/* NEW - add a link to the home and profile pages */}
       {isAuthenticated && (
         <span>
-          <Link to="/">Home</Link>&nbsp;
-          <Link to="/profile">Profile</Link>
+          <Link
+            style={{
+              "font-size": "20px",
+              "margin-right": "20px",
+              "margin-left": "20px"
+            }}
+            to="/"
+          >
+            Home
+          </Link>
+          &nbsp;
+          <Link style={{ "font-size": "20px" }} to="/profile">
+            Profile
+          </Link>
         </span>
       )}
     </div>
